@@ -16,11 +16,18 @@ public class StreamString {
     }
 
     public void metod2(String[] list) {
-        List<String> list1 = Arrays.stream(list)
+        Arrays.stream(list)
                 .sorted((o1, o2) -> -o1.compareTo(o2))
-                .collect(Collectors.toList());
-        list1.stream()
                 .map(String::toUpperCase)
                 .forEach(s -> System.out.print("\n" + s));
+        ;
+    }
+
+    public void metodStream(String[] array) {
+        Arrays.stream(String.join(",", array).replace(", ", ",").split(","))
+                .mapToInt(Integer::parseInt)
+                .sorted()
+                .mapToObj(String::valueOf)
+                .forEach(s -> System.out.print(s + ","));
     }
 }
